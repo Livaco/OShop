@@ -1,7 +1,7 @@
 # OShop
 A modern NPC shop with Theme support, permanent weapons, and more!
 
-﻿## Features
+## Features
 - VGUI with animations.
 - Three themes, Solid, Blur and Opacity.
 - Themes persist on server restart, and after player sessions.
@@ -11,7 +11,7 @@ A modern NPC shop with Theme support, permanent weapons, and more!
 - Full documentation on how to use the addon properly.
 - Permanent weapons, with console commands to allow you to assign them to players.
 
-﻿## Media
+## Media
 Youtube video comming soon.
 
 ## Support
