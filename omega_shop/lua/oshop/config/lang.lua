@@ -11,6 +11,30 @@ General Language
 // Opening menu.
 OShop.Lang.Opening = "Opening menu."
 
+// If the player cannot access a command.
+OShop.Lang.NoAccess = "You do not have access to that command."
+
+
+/*
+Configuration Language
+Unfortunately I cannot localize the entirety of the in-game config. The actual configuration title, descriptions and defaults will be english. Sorry for any problems caused. If worst comes to worst, use google translate.
+*/
+
+// What to say if the player opens the in-game config.
+OShop.Lang.OpenConfig = "Opening the configuration..."
+
+// Config VGUI title
+OShop.Lang.ConfigurationTitle = "Configuration"
+
+// Default text if there is not a config category selected.
+OShop.Lang.ConfigNone = "Select a category on the side to begin configuration."
+
+// Save button text
+OShop.Lang.ConfigSave = "Save"
+
+// Chat message when config is updated.
+OShop.Lang.ConfigUpdate = "Config has been updated."
+
 /*
 VGUI Language
 */
@@ -23,6 +47,7 @@ OShop.Lang.Nothing = "There is no items able to be shown."
 
 // When the player changes themes.
 OShop.Lang.ChangeTheme = "Theme has been changed to %s, reopen the UI for changes to be made."
+
 
 /*
 Buying Language
@@ -39,6 +64,7 @@ OShop.Lang.NotBuyingIt = "Something went wrong! You will not be charged."
 
 // If they try to buy a Permanent weapon but already own it.
 OShop.Lang.AlreadyHasPerma = "You already have this weapon."
+
 
 /*
 Administration Language

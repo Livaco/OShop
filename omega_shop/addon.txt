@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+	"name"				"Omega Shop"
+	"version"			"2.0"
+	"up_date"			"10/02/2019"
+	"author_name"		"Livaco"
+	"author_email"		"livacobussness@outlook.com"
+	"author_url"		"http://www.livaco.tk/"
+	"info"				"A modern NPC shop for Garry's Mod."
+	"override"			"0"
+}

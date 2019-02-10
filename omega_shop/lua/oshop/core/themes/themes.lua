@@ -1,18 +1,18 @@
 OShop.Themes = OShop.Themes or {}
 
-OShop.Themes["Solid"] = function(Categorys, Items)
+OShop.Themes["Solid"] = function(Config, Categorys, Items)
   surface.CreateFont("oshop_vgui1", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.03
   })
 
   surface.CreateFont("oshop_vgui2", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.05
   })
 
   surface.CreateFont("oshop_vgui3", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.02
   })
 
@@ -26,7 +26,7 @@ OShop.Themes["Solid"] = function(Categorys, Items)
   frame.Paint = function(s, w, h)
     draw.RoundedBox(0, 0, 0, w, h, Color(50, 50, 50, 255))
     draw.RoundedBox(0, 0, 0, w, h * 0.05, Color(0, 0, 0, 255))
-    draw.SimpleText(OShop.Config.VGUI.Title, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
+    draw.SimpleText(Config[3].ConfigValue, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
   end
 
   local w,h = frame:GetWide(), frame:GetTall()
@@ -57,7 +57,11 @@ OShop.Themes["Solid"] = function(Categorys, Items)
   ThemeSelect.OnSelect = function(a, b, value)
     cookie.Set("oshop_theme", value)
     frame:Close()
-    OShop.Message(string.format(OShop.Lang.ChangeTheme, value))
+    local PrefixCC = util.JSONToTable(Config[4].ConfigValue)
+    local PrefixC = Color(PrefixCC.r, PrefixCC.g, PrefixCC.b, 255)
+    local TextCC = util.JSONToTable(Config[11].ConfigValue)
+    local TextC = Color(TextCC.r, TextCC.g, TextCC.b, 255)
+    OShop.Message(Config[5].ConfigValue, string.format(OShop.Lang.ChangeTheme, value), tobool(Config[8].ConfigValue), tonumber(Config[14].ConfigValue), PrefixC, TextC)
   end
 
   local SelectedCategory = ""
@@ -136,7 +140,7 @@ OShop.Themes["Solid"] = function(Categorys, Items)
           net.Start("oshop_requestpurchuse")
           net.WriteString(v.name)
           net.SendToServer()
-          if(OShop.Config.VGUI.CloseOnBuy == true) then
+          if(tobool(Config[2].ConfigValue) == true) then
             frame:Close()
           end
         end
@@ -188,7 +192,7 @@ end
 
 
 // Blur
-OShop.Themes["Blur"] = function(Categorys, Items)
+OShop.Themes["Blur"] = function(Config, Categorys, Items)
   local blur = Material("pp/blurscreen")
   local function DrawBlur(panel, amount)
   	local x, y = panel:LocalToScreen(0, 0)
@@ -211,17 +215,17 @@ OShop.Themes["Blur"] = function(Categorys, Items)
   end
 
   surface.CreateFont("oshop_vgui1", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.03
   })
 
   surface.CreateFont("oshop_vgui2", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.05
   })
 
   surface.CreateFont("oshop_vgui3", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.02
   })
 
@@ -237,7 +241,7 @@ OShop.Themes["Blur"] = function(Categorys, Items)
     DrawBlur(frame, 10)
     draw.RoundedBox(0, 0, 0, w, h * 0.05, Color(0, 0, 0, 255))
     OutlinedBox(0, 0, w, h, 5, Color(0, 0, 0, 255))
-    draw.SimpleText(OShop.Config.VGUI.Title, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
+    draw.SimpleText(Config[3].ConfigValue, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
   end
 
   local w,h = frame:GetWide(), frame:GetTall()
@@ -268,7 +272,11 @@ OShop.Themes["Blur"] = function(Categorys, Items)
   ThemeSelect.OnSelect = function(a, b, value)
     cookie.Set("oshop_theme", value)
     frame:Close()
-    OShop.Message(string.format(OShop.Lang.ChangeTheme, value))
+    local PrefixCC = util.JSONToTable(Config[4].ConfigValue)
+    local PrefixC = Color(PrefixCC.r, PrefixCC.g, PrefixCC.b, 255)
+    local TextCC = util.JSONToTable(Config[11].ConfigValue)
+    local TextC = Color(TextCC.r, TextCC.g, TextCC.b, 255)
+    OShop.Message(Config[5].ConfigValue, string.format(OShop.Lang.ChangeTheme, value), tobool(Config[8].ConfigValue), tonumber(Config[14].ConfigValue), PrefixC, TextC)
   end
 
   local SelectedCategory = ""
@@ -347,7 +355,7 @@ OShop.Themes["Blur"] = function(Categorys, Items)
           net.Start("oshop_requestpurchuse")
           net.WriteString(v.name)
           net.SendToServer()
-          if(OShop.Config.VGUI.CloseOnBuy == true) then
+          if(tobool(Config[2].ConfigValue) == true) then
             frame:Close()
           end
         end
@@ -399,19 +407,19 @@ end
 
 
 // Opacity
-OShop.Themes["Opacity"] = function(Categorys, Items)
+OShop.Themes["Opacity"] = function(Config, Categorys, Items)
   surface.CreateFont("oshop_vgui1", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.03
   })
 
   surface.CreateFont("oshop_vgui2", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.05
   })
 
   surface.CreateFont("oshop_vgui3", {
-    font = OShop.Config.Font,
+    font = Config[10].ConfigValue,
     size = ScrH() * 0.02
   })
 
@@ -425,7 +433,7 @@ OShop.Themes["Opacity"] = function(Categorys, Items)
   frame.Paint = function(s, w, h)
     draw.RoundedBox(0, 0, 0, w, h, Color(0, 0, 0, 200))
     draw.RoundedBox(0, 0, 0, w, h * 0.05, Color(0, 0, 0, 200))
-    draw.SimpleText(OShop.Config.VGUI.Title, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
+    draw.SimpleText(Config[3].ConfigValue, "oshop_vgui1", w * 0.005, 0, Color(255, 255, 255), 0, 0)
   end
 
   local w,h = frame:GetWide(), frame:GetTall()
@@ -456,7 +464,11 @@ OShop.Themes["Opacity"] = function(Categorys, Items)
   ThemeSelect.OnSelect = function(a, b, value)
     cookie.Set("oshop_theme", value)
     frame:Close()
-    OShop.Message(string.format(OShop.Lang.ChangeTheme, value))
+    local PrefixCC = util.JSONToTable(Config[4].ConfigValue)
+    local PrefixC = Color(PrefixCC.r, PrefixCC.g, PrefixCC.b, 255)
+    local TextCC = util.JSONToTable(Config[11].ConfigValue)
+    local TextC = Color(TextCC.r, TextCC.g, TextCC.b, 255)
+    OShop.Message(Config[5].ConfigValue, string.format(OShop.Lang.ChangeTheme, value), tobool(Config[8].ConfigValue), tonumber(Config[14].ConfigValue), PrefixC, TextC)
   end
 
   local SelectedCategory = ""
@@ -535,7 +547,7 @@ OShop.Themes["Opacity"] = function(Categorys, Items)
           net.Start("oshop_requestpurchuse")
           net.WriteString(v.name)
           net.SendToServer()
-          if(OShop.Config.VGUI.CloseOnBuy == true) then
+          if(tobool(Config[2].ConfigValue) == true) then
             frame:Close()
           end
         end

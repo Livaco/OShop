@@ -9,7 +9,7 @@ hook.Add("PlayerConnect", "oshop_versioncheck", function()
   if(RanCheck == true) then return end
   OShop.Print("Running version check!")
   // Post request.
-  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "1.0"}, function(result)
+  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "2.0"}, function(result)
     OShop.Print(result)
   end, function(fail)
     OShop.Print("Error: " .. fail)
@@ -53,12 +53,21 @@ end
 
 function OShop.SVMessage(ply, msg)
   net.Start("oshop_message")
+  net.WriteString(OShop.GetConfigValue("Prefix")[1].ConfigValue)
   net.WriteString(msg)
+  net.WriteBool(tobool(OShop.GetConfigValue("UseNotifications")[1].ConfigValue))
+  net.WriteInt(tonumber(OShop.GetConfigValue("NotificationTime")[1].ConfigValue), 32)
+  local PColorTable = util.JSONToTable(OShop.GetConfigValue("PrefixColor")[1].ConfigValue)
+  local PColor = Color(PColorTable.r, PColorTable.g, PColorTable.b, 255)
+  net.WriteColor(PColor)
+  local TColorTable = util.JSONToTable(OShop.GetConfigValue("TextColor")[1].ConfigValue)
+  local TColor = Color(TColorTable.r, TColorTable.g, TColorTable.b, 255)
+  net.WriteColor(TColor)
   net.Send(ply)
 end
 
 function OShop.CanUseCommands(ply)
-  if(table.HasValue(OShop.Config.CommandGroups, ply:GetUserGroup())) then
+  if(table.HasValue(util.JSONToTable(OShop.GetConfigValue("CommandGroups")[1].ConfigValue), ply:GetUserGroup())) then
     return true
   else
     return false
@@ -69,8 +78,9 @@ function OShop.CreateTables()
   if(sql.TableExists("oshop_permaweapons") == false) then
     local Query = sql.Query("CREATE TABLE oshop_permaweapons(SteamID TEXT, Class TEXT);")
     if(Query == false) then
-      OShop.Print("a")
+      OShop.Print("A error has occured while creating the table.")
       OShop.Print(string.format(OShop.Lang.SQLError, "CREATE TABLE oshop_permaweapons(SteamID TEXT, Class TEXT);"))
+      return
     else
       OShop.Print(string.format(OShop.Lang.TableCreated, "oshop_permaweapons"))
     end
@@ -83,7 +93,7 @@ function OShop.AddPermaWeapon(sid, class)
   if(Query == false) then
     OShop.Print(string.format(OShop.Lang.SQLError, "INSERT INTO oshop_permaweapons(SteamID, Class) VALUES ('" .. sid .. "', '" .. class .. "');"))
   else
-    if(OShop.Config.Buy.LogPerma == true) then
+    if(tobool(OShop.GetConfigValue("LogPerma")[1].ConfigValue) == true) then
       OShop.Print(string.format(OShop.Lang.PermaWeaponAssigned, sid, class))
     end
   end

@@ -1,6 +1,10 @@
 This file will show you how to create your own items in the addon, and if you are a Addon Developer, how to add OShop support for your addon. This file also shows the Console Commands the addon has.
 
--------------------------------------------[[Console Commands ]]-------------------------------------------
+-------------------------------------------[[General Configuration]]-------------------------------------------
+
+OShop has an IN-GAME configuration menu. The only file stuff you should be changing is the usergroups able to use it, in the previous config file, and your items (more on that bellow). Everything else is done inside of the menu, called by using !oshop_config
+
+-------------------------------------------[[Console Commands]]-------------------------------------------
 
 OShop comes with a few Console Commands to make life easier. These are mainly for Permanent Weapon managment, but you can still use them. Note that everywhere a Player Name is required, requires the player to be online.
 

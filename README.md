@@ -1,8 +1,10 @@
 # OShop
 A modern NPC shop with Theme support, permanent weapons, and more!
 
-## Features
+﻿## Features
 - VGUI with animations.
+- Language file.
+- In-Game config, to prevent you from restarting your server.
 - Three themes, Solid, Blur and Opacity.
 - Themes persist on server restart, and after player sessions.
 - Ability to sell Weapons, Props, Permanent Weapons, Entities and Ammo.
@@ -10,11 +12,12 @@ A modern NPC shop with Theme support, permanent weapons, and more!
 - Developers can add support for the addon with a little bit of code.
 - Full documentation on how to use the addon properly.
 - Permanent weapons, with console commands to allow you to assign them to players.
+- Optimised to the fullest extent.
 
-## Media
-https://www.youtube.com/watch?v=0JfKbem7p5k&feature=youtu.be
+﻿## Media
+https://www.youtube.com/watch?v=0JfKbem7p5k
 
 ## Support
 The addon supports Version Checking, along with Support Tickets. This means when the first players joins your server, the addon will check if it is up to date with the current version, and if not warns you. As for support tickets, this means you can make a ticket at livaco.tk and get full support with the addon.
 
-## Thank you.
+##Thank you.

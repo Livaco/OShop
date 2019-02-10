@@ -28,7 +28,9 @@ if SERVER then
   OShop.Print("Loading serverside...")
 
   include("oshop/core/sv_main.lua") OShop.Print("sv_main.lua")
+  include("oshop/core/sv_config.lua") OShop.Print("sv_config.lua")
   OShop.CreateTables()
+  OShop.ConfigChecks()
 
   OShop.Print("Loading default categorys and items.")
   for b, File in SortedPairs(file.Find("oshop/items/*.lua", "LUA"), true) do
@@ -37,6 +39,7 @@ if SERVER then
   end
 
   AddCSLuaFile("oshop/core/cl_main.lua") // AddCSLuaFile are not logged.
+  AddCSLuaFile("oshop/core/cl_config.lua")
   AddCSLuaFile("oshop/core/themes/themes.lua")
 
   OShop.Print("Loaded.")
@@ -45,6 +48,7 @@ else
 
   include("oshop/core/themes/themes.lua") OShop.Print("themes.lua")
   include("oshop/core/cl_main.lua") OShop.Print("cl_main.lua")
+  include("oshop/core/cl_config.lua") OShop.Print("cl_config.lua")
 
   OShop.Print("Loaded.")
 end

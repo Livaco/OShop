@@ -7,4 +7,6 @@ ENT.AutomaticFrameAdvance = true
 ENT.AdminOnly = true
 
 function ENT:SetupDataTables()
+  self:NetworkVar("String", 1, "ThreeDeeTwoDee")
+  self:NetworkVar("Bool", 2, "ThreeDeeStare")
 end

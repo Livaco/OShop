@@ -1,3 +1,47 @@
+// THIS IS THE ONLY VALUE YOU SHOULD CHANGE.
+// This defines what usergroups are allowed to use the in-game config. This is defined in a file for security reasons, and cannot be changed in-game.
+OShop.Config.InGameConfigGroups = {"superadmin", "admin"}
+
+// If you are having issues with the config being invalid, run THIS console command and restart your server: lua_run sql.Query("DROP TABLE oshop_config")
+// What this does is simple delete the SQLite table that has the config inside it, allowing the addon to attempt to recreate it on server restart.
+
+
+
+--[[
+
+
+
+----------------------------------------
+DON'T GODDAMN USE THE REST OF THIS FILE
+USE THE INGAME CONFIG WITH !oshop_config
+YOU SHOULD ONLY EDIT THE FIRST VALUE OF THIS FILE AND THE LANGUAGE FILE AT LANG.LUA
+YOU HAVE BEEN WARNED
+----------------------------------------
+
+
+
+]]--
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 OShop by Livaco
 Configuration
