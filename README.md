@@ -1,7 +1,7 @@
 # OShop
 A modern NPC shop with Theme support, permanent weapons, and more!
 
-﻿## Features
+## Features
 - VGUI with animations.
 - Language file.
 - In-Game config, to prevent you from restarting your server.
@@ -14,7 +14,7 @@ A modern NPC shop with Theme support, permanent weapons, and more!
 - Permanent weapons, with console commands to allow you to assign them to players.
 - Optimised to the fullest extent.
 
-﻿## Media
+## Media
 https://www.youtube.com/watch?v=0JfKbem7p5k
 
 ## Support
