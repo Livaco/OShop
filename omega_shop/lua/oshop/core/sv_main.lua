@@ -9,7 +9,7 @@ hook.Add("PlayerConnect", "oshop_versioncheck", function()
   if(RanCheck == true) then return end
   OShop.Print("Running version check!")
   // Post request.
-  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "2.0"}, function(result)
+  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "2.1"}, function(result)
     OShop.Print(result)
   end, function(fail)
     OShop.Print("Error: " .. fail)
@@ -154,6 +154,7 @@ net.Receive("oshop_requestpurchuse", function(len, ply)
     local ent = ents.Create("prop_physics")
     ent:SetPos(ply:GetPos() + Vector(50, 0, 20))
     ent:SetModel(Item.class)
+    ent:Setowning_ent(ply)
     ent:Spawn()
     OShop.SVMessage(ply, string.format(OShop.Lang.BuyIt, string.Comma(Item.price)))
     return

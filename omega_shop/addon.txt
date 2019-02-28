@@ -1,8 +1,8 @@
 "AddonInfo"
 {
 	"name"				"Omega Shop"
-	"version"			"2.0"
-	"up_date"			"10/02/2019"
+	"version"			"2.1"
+	"up_date"			"28/02/2019"
 	"author_name"		"Livaco"
 	"author_email"		"livacobussness@outlook.com"
 	"author_url"		"http://www.livaco.tk/"
