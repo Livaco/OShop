@@ -4,6 +4,14 @@ OShop.CreateCategory("Gardening Supplies", {
   color = Color(15, 150, 15, 255)
 })
 
+OShop.CreateItem("Shop Tablet", {
+  category = "Gardening Supplies",
+  itemtype = "weapons",
+  class = "zwf_shoptablet",
+  description = "Comes with one app.",
+  price = 50
+})
+
 OShop.CreateItem("Flowerpot", {
   category = "Gardening Supplies",
   itemtype = "entity",
