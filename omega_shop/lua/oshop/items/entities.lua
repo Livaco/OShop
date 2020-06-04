@@ -1,24 +1,15 @@
-// Entities category.
+-- Other category.
 
-OShop.CreateCategory("Entities", {
-  description = "Do Cool Stuff!",
+OShop.CreateCategory("Other", {
+  description = "Lots of other fancy things here.",
   color = Color(0, 200, 0, 255)
 })
 
-OShop.CreateItem("Bouncy Ball", {
-  category = "Entities",
+OShop.CreateItem("Big Battery", {
+  category = "Other",
   itemtype = "entity",
-  class = "sent_ball",
+  class = "tierp_battery",
   setowning_ent = false,
-  description = "Bouncy!",
-  price = 50
-})
-
-OShop.CreateItem("Helicopter Bomb", {
-  category = "Entities",
-  itemtype = "entity",
-  class = "grenade_helicopter",
-  setowning_ent = false,
-  description = "Bang! Explode anyone you want!",
-  price = 128000000
+  description = "Looks like it would be compatible with the industrial printer!",
+  price = 500
 })
