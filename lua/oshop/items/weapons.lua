@@ -1,4 +1,4 @@
-// Weapons category.
+--[[// Weapons category.
 OShop.CreateCategory("Weapons", {
   description = "Bang Bang!",
   color = Color(200, 0, 0, 255)
@@ -27,3 +27,4 @@ OShop.CreateItem("RPG", {
   description = "A rocket propelled grenade.",
   price = 1000
 })
+]]
