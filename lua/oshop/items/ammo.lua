@@ -1,4 +1,4 @@
-// Ammo category.
+--[[// Ammo category.
 
 OShop.CreateCategory("Ammo", {
   description = "Stock it up!",
@@ -76,3 +76,4 @@ OShop.CreateItem("Grenade Ammo", {
   description = "A Grenade.",
   price = 600
 })
+]]
