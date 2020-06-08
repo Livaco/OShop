@@ -1,4 +1,4 @@
-// Weapons category.
+--[[// Weapons category.
 OShop.CreateCategory("Permanent Weapons", {
   description = "Buy one: Get it forever!",
   color = Color(200, 0, 0, 255)
@@ -19,3 +19,4 @@ OShop.CreateItem("Shotgun", {
   description = "A shotgun. Great for hunting!",
   price = 1200
 })
+]]
