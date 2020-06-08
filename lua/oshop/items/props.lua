@@ -1,4 +1,4 @@
-// Props category.
+--[[// Props category.
 
 OShop.CreateCategory("Props", {
   description = "Make cool stuff!",
@@ -20,3 +20,4 @@ OShop.CreateItem("Fridge", {
   description = "Freeze stuff!",
   price = 500
 })
+]]
