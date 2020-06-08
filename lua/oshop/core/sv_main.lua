@@ -3,21 +3,6 @@ util.AddNetworkString("oshop_message")
 util.AddNetworkString("oshop_requestpurchuse")
 
 
-// Version Check
-local RanCheck = false
-hook.Add("PlayerConnect", "oshop_versioncheck", function()
-  if(RanCheck == true) then return end
-  OShop.Print("Running version check!")
-  // Post request.
-  http.Post("https://livacoweb.000webhostapp.com/libaries/versions/oshop.php", {RunningVar = "2.1"}, function(result)
-    OShop.Print(result)
-  end, function(fail)
-    OShop.Print("Error: " .. fail)
-    OShop.Print("This is most likely due to my website being down. Try again later.")
-  end)
-  RanCheck = true
-end)
-
 OShop.Categorys = OShop.Categorys or {}
 OShop.Items = OShop.Items or {}
 
@@ -38,8 +23,8 @@ function OShop.CreateItem(name, table)
     desc = table.description,
     color = table.color,
     price = table.price,
-    needowning = table.setowning_ent, // Entities
-    amount = table.amount // Ammo
+    needowning = table.setowning_ent,
+    amount = table.amount
   }
 end
 
@@ -88,7 +73,9 @@ function OShop.CreateTables()
 end
 
 function OShop.AddPermaWeapon(sid, class)
-  OShop.CreateTables() // Just incase the function at startup didn't work.
+  -- Just incase the function at startup didn't work.
+
+  OShop.CreateTables()
   local Query = sql.Query("INSERT INTO oshop_permaweapons(SteamID, Class) VALUES ('" .. sid .. "', '" .. class .. "');")
   if(Query == false) then
     OShop.Print(string.format(OShop.Lang.SQLError, "INSERT INTO oshop_permaweapons(SteamID, Class) VALUES ('" .. sid .. "', '" .. class .. "');"))
@@ -100,7 +87,9 @@ function OShop.AddPermaWeapon(sid, class)
 end
 
 function OShop.CheckPermaWeapon(sid)
-  OShop.CreateTables() // Just incase the function at startup didn't work.
+  -- Just incase the function at startup didn't work.
+
+  OShop.CreateTables()
   local Query = sql.Query("SELECT * FROM oshop_permaweapons WHERE '" .. sid .. "' = SteamID")
   if(Query == false) then
     OShop.Print(string.format(OShop.Lang.SQLError, "SELECT * FROM oshop_permaweapons WHERE '" .. sid .. "' = SteamID"))
@@ -109,7 +98,8 @@ function OShop.CheckPermaWeapon(sid)
   end
 end
 
-hook.Add("PlayerSpawn", "oshop_playerspawn", function(ply) // For permanent weapons
+-- For permanent weapons
+hook.Add("PlayerSpawn", "oshop_playerspawn", function(ply)
   local weapons = OShop.CheckPermaWeapon(ply:SteamID())
   if(weapons == nil) then return end
   for k,v in pairs(weapons) do
@@ -179,7 +169,7 @@ net.Receive("oshop_requestpurchuse", function(len, ply)
 end)
 
 concommand.Add("oshop_clearallpermas", function(ply)
-  if(!IsValid(ply)) then // Is console
+  if(not IsValid(ply)) then
     local Query = sql.Query("DELETE FROM oshop_permaweapons")
     if(Query == false) then
       OShop.Print(string.format(OShop.Lang.SQLError, "DELETE FROM oshop_permaweapons"))
@@ -213,7 +203,7 @@ function OShop.FindPlyByName(name)
 end
 
 concommand.Add("oshop_unbindweapon", function(ply, _, args)
-  if(!IsValid(ply)) then // Is console
+  if(not IsValid(ply)) then
     if(args[1] == nil or args[1] == "") then
       OShop.Print("No player specified!")
       return
@@ -223,7 +213,7 @@ concommand.Add("oshop_unbindweapon", function(ply, _, args)
       return
     end
     local target = OShop.FindPlyByName(args[1])
-    if(!IsValid(target)) then
+    if(not IsValid(target)) then
       OShop.Print("Could not find player!")
       return
     end
@@ -245,7 +235,7 @@ concommand.Add("oshop_unbindweapon", function(ply, _, args)
         return
       end
       local target = OShop.FindPlyByName(args[1])
-      if(!IsValid(target)) then
+      if(not IsValid(target)) then
         OShop.SVMessage(ply, "Could not find player!")
         return
       end
@@ -264,7 +254,7 @@ concommand.Add("oshop_unbindweapon", function(ply, _, args)
 end)
 
 concommand.Add("oshop_assignweapon", function(ply, _, args)
-  if(!IsValid(ply)) then // Is console
+  if(not IsValid(ply)) then
     if(args[1] == nil or args[1] == "") then
       OShop.Print("No player specified!")
       return
@@ -274,7 +264,7 @@ concommand.Add("oshop_assignweapon", function(ply, _, args)
       return
     end
     local target = OShop.FindPlyByName(args[1])
-    if(!IsValid(target)) then
+    if(not IsValid(target)) then
       OShop.Print("Could not find player!")
       return
     end
@@ -291,7 +281,7 @@ concommand.Add("oshop_assignweapon", function(ply, _, args)
         return
       end
       local target = OShop.FindPlyByName(args[1])
-      if(!IsValid(target)) then
+      if(not IsValid(target)) then
         OShop.SVMessage(ply, "Could not find player!")
         return
       end
