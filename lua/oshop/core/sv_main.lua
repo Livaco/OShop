@@ -123,7 +123,7 @@ net.Receive("oshop_requestpurchuse", function(len, ply)
   if(Item.itemtype == "entity") then
     ply:addMoney(Item.price * -1)
     local ent = ents.Create(Item.class)
-    ent:SetPos(ply:GetPos() + Vector(50, 0, 20))
+    ent:SetPos(ply:GetPos() + Vector(50, 0, 80))
     if(Item.needowning == true) then
       ent:Setowning_ent(ply)
     end
@@ -142,7 +142,7 @@ net.Receive("oshop_requestpurchuse", function(len, ply)
   if(Item.itemtype == "prop") then
     ply:addMoney(Item.price * -1)
     local ent = ents.Create("prop_physics")
-    ent:SetPos(ply:GetPos() + Vector(50, 0, 20))
+    ent:SetPos(ply:GetPos() + Vector(50, 0, 80))
     ent:SetModel(Item.class)
     ent:Setowning_ent(ply)
     ent:Spawn()
